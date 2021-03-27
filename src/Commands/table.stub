@@ -1,0 +1,27 @@
+<?php
+
+namespace [namespace];
+
+use Square1\Genesis\TableRow;
+use Illuminate\Database\Eloquent\Builder;
+use Square1\Genesis\Http\Livewire\ResourceTable;
+
+class [class] extends ResourceTable
+{
+    protected function query() : Builder
+    {
+        // Replace with your eloquent model
+        $query = YourModel::query();
+
+        $query->applySearch(['id']);
+
+        return $query;
+    }
+
+    public function getRowsProperty() : array
+    {
+        return [
+            TableRow::make('Id'),
+        ];
+    }
+}

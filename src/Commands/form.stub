@@ -1,0 +1,30 @@
+<?php
+
+namespace [namespace];
+
+use Square1\Genesis\Http\Livewire\Form;
+
+class [class] extends Form
+{
+    /**
+     * Your form blade view, you are free!
+     *
+     * @var string
+     */
+    public $viewPath = '[view]';
+
+    public $model;
+
+
+    public function mount($itemId)
+    {
+        $this->model = YourModel::find($itemId);
+    }
+
+    public function save()
+    {
+        // Do your magic
+        $this->clearDialogEditModalData();
+        $this->notify(__('Item was saved!'));
+    }
+}

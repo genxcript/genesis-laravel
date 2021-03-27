@@ -1,23 +1,27 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "laravel-genesis/genesis",
+    "description": "Rapid app and admin panel development using TALL stack. This package is a respectful replacement of Laravel Nova, built with Livewire and the beauty of tailwindui.com components.",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "LaravelGenesis",
+        "genesis",
+        "Laravel",
+        "admin theme"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/laravel-genesis/genesis",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Emiliano Tisato",
+            "email": "emilianotisato@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.4",
         "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^8.0"
+        "illuminate/contracts": "^8.0",
+        "livewire/livewire": "^2.4",
+        "laravel/jetstream": "^2.2"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",
@@ -29,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "LaravelGenesis\\Genesis\\": "src",
+            "LaravelGenesis\\Genesis\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "LaravelGenesis\\Genesis\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +53,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "LaravelGenesis\\Genesis\\GenesisServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Genesis": "LaravelGenesis\\Genesis\\GenesisFacade"
             }
         }
     },

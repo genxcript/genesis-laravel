@@ -1,26 +1,30 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace LaravelGenesis\Genesis\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
+use Laravel\Jetstream\JetstreamServiceProvider;
+use LaravelGenesis\Genesis\GenesisServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'LaravelGenesis\\Genesis\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+        // $this->artisan('jetstream:install livewire');
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            GenesisServiceProvider::class,
+            JetstreamServiceProvider::class,
         ];
     }
 
@@ -34,7 +38,7 @@ class TestCase extends Orchestra
         ]);
 
         /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_genesis_table.php.stub';
         (new \CreatePackageTable())->up();
         */
     }
