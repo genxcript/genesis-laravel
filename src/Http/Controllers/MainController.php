@@ -13,6 +13,6 @@ class MainController extends BaseController
 
     public function dashboard()
     {
-        return view('genesis::dashboard');
+        return view('genesis::dashboard_container');
     }
 }
