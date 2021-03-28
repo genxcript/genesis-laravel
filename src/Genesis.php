@@ -114,5 +114,7 @@ class Genesis
     public function registerResourceRoute($resource)
     {
         Route::view($resource::uriKey(), 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.index');
+        Route::view($resource::uriKey().'/{resourceId}', 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.view');
+        Route::view($resource::uriKey().'/{resourceId}/edit', 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.edit');
     }
 }

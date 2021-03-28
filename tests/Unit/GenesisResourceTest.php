@@ -25,5 +25,13 @@ class GenesisResourceTest extends TestCase
             url('users'),
             route('genesis::users.index')
         );
+        $this->assertEquals(
+            url('users/1'),
+            route('genesis::users.view', ['resourceId' => 1])
+        );
+        $this->assertEquals(
+            url('users/1/edit'),
+            route('genesis::users.edit', ['resourceId' => 1])
+        );
     }
 }
