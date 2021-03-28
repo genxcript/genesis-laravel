@@ -2,12 +2,9 @@
 
 namespace LaravelGenesis\Genesis;
 
-use ReflectionClass;
-use Illuminate\Support\Str;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
+use LaravelGenesis\Genesis\Components\MenuItem;
 use LaravelGenesis\Genesis\Components\AppLayout;
 use LaravelGenesis\Genesis\Commands\GenesisCommand;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -34,12 +31,13 @@ class GenesisServiceProvider extends PackageServiceProvider
 
     public function packageBooted()
     {
+        $this->configureComponents();
+
         $this->loadViewComponentsAs('genesis', [AppLayout::class]);
+        $this->loadViewComponentsAs('gen', [MenuItem::class]);
         Blade::directive('genesisStyles', [GenesisBladeDirectives::class, 'genesisStyles']);
         Blade::directive('genesisScripts', [GenesisBladeDirectives::class, 'genesisScripts']);
 
-        // $this->registerResources();
-        $this->configureComponents();
         if (class_exists(Livewire::class)) {
             \Livewire\Component::macro('notify', function ($message) {
                 $this->dispatchBrowserEvent('notify', $message);
@@ -50,37 +48,6 @@ class GenesisServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->app->singleton('genesis', Genesis::class);
-    }
-
-    public function registerResources()
-    {
-        $directory = app_path('Http/Livewire/Genesis');
-        $namespace = app()->getNamespace();
-
-        // $resources = [];
-
-        foreach ((new Finder)->in($directory)->files() as $resource) {
-            $resource = $namespace.str_replace(
-                ['/', '.php'],
-                ['\\', ''],
-                Str::after($resource->getPathname(), app_path().DIRECTORY_SEPARATOR)
-            );
-
-            if (is_subclass_of($resource, ResourceTable::class) &&
-                ! (new ReflectionClass($resource))->isAbstract()) {
-                // $resources[] = $resource;
-                $this->registerResourceRoute($resource);
-            }
-        }
-    }
-
-    public function registerResourceRoute($resource)
-    {
-        if ($this->app->routesAreCached()) {
-            return;
-        }
-
-        Route::middleware([])->get($resource::$config['viewAll'], $resource);
     }
 
     /**

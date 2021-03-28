@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelGenesis\Genesis\GenesisFacade;
 use LaravelGenesis\Genesis\Http\Controllers\MainController;
 
 /*
@@ -12,4 +13,7 @@ use LaravelGenesis\Genesis\Http\Controllers\MainController;
 |
 */
 
-Route::get(config('genesis.path'), [MainController::class, 'dashboard']);
+Route::prefix(config('genesis.path'))->group(function () {
+    Route::get('', [MainController::class, 'dashboard']);
+    GenesisFacade::registerResources(app_path('Http/Livewire/Genesis'));
+});

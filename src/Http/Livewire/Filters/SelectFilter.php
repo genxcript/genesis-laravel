@@ -1,6 +1,6 @@
 <?php
 
-namespace Square1\Genesis\Http\Livewire\Filters;
+namespace LaravelGenesis\Genesis\Http\Livewire\Filters;
 
 use Illuminate\View\View;
 

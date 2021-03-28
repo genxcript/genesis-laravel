@@ -1,6 +1,6 @@
 <?php
 
-namespace Square1\Genesis\Commands;
+namespace LaravelGenesis\Genesis\Commands;
 
 use Illuminate\Support\Facades\File;
 use Livewire\Commands\ComponentParser;

@@ -2,11 +2,11 @@
 
 namespace [namespace];
 
-use Square1\Genesis\TableRow;
+use LaravelGenesis\Genesis\TableRow;
 use Illuminate\Database\Eloquent\Builder;
-use Square1\Genesis\Http\Livewire\ResourceTable;
+use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
 
-class [class] extends ResourceTable
+class [class] extends GenesisResource
 {
     protected function query() : Builder
     {

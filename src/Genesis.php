@@ -3,7 +3,11 @@
 namespace LaravelGenesis\Genesis;
 
 use Livewire\Livewire;
+use Illuminate\Support\Str;
+use Symfony\Component\Finder\Finder;
+use Illuminate\Support\Facades\Route;
 use LaravelGenesis\Genesis\Http\Livewire\Form;
+use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
 
 class Genesis
 {
@@ -52,12 +56,12 @@ class Genesis
         $trix = config('genesis.load_trix') ? '<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">' : '';
 
         return <<<HTML
-    $pikaday
-    $trix
-<style>
-    /** Genesis custom style */
-</style>
-HTML;
+                $pikaday
+                $trix
+                <style>
+                    /** Genesis custom style */
+                </style>
+            HTML;
     }
 
     protected function javaScriptAssets($options)
@@ -69,20 +73,46 @@ HTML;
         $notifications = file_get_contents(__DIR__.'/../resources/views/components/notification.blade.php');
 
         return <<<HTML
-    $notifications
-    $moment
-    $pikaday
-    $trix
-<!-- <script data-turbolinks-eval="false">
-    document.addEventListener("DOMContentLoaded", function () {
+                $notifications
+                $moment
+                $pikaday
+                $trix
+                <!-- <script data-turbolinks-eval="false">
+                    document.addEventListener("DOMContentLoaded", function () {
 
-    });
-</script> -->
-HTML;
+                    });
+                </script> -->
+            HTML;
     }
 
     protected function minify($subject)
     {
         return preg_replace('~(\v|\t|\s{2,})~m', '', $subject);
+    }
+
+    public function registerResources(string $directory)
+    {
+        if (! is_dir($directory)) {
+            return;
+        }
+
+        $namespace = app()->getNamespace();
+
+        foreach ((new Finder)->in($directory)->files() as $resource) {
+            $resource = $namespace.str_replace(
+                ['/', '.php'],
+                ['\\', ''],
+                Str::after($resource->getPathname(), app_path().DIRECTORY_SEPARATOR)
+            );
+
+            if (new $resource instanceof GenesisResource) {
+                $this->registerResourceRoute($resource);
+            }
+        }
+    }
+
+    public function registerResourceRoute($resource)
+    {
+        Route::view($resource::uriKey(), 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.index');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Square1\Genesis\Http\Livewire\Traits;
+namespace LaravelGenesis\Genesis\Http\Livewire\Traits;
 
 trait WithSearch
 {

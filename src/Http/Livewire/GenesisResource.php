@@ -1,17 +1,18 @@
 <?php
 
-namespace Square1\Genesis\Http\Livewire;
+namespace LaravelGenesis\Genesis\Http\Livewire;
 
 use Livewire\Component;
-use Square1\Genesis\TableRow;
+use Illuminate\Support\Str;
+use LaravelGenesis\Genesis\TableRow;
 use Illuminate\Database\Eloquent\Builder;
-use Square1\Genesis\Http\Livewire\Traits\WithModals;
-use Square1\Genesis\Http\Livewire\Traits\WithSearch;
-use Square1\Genesis\Http\Livewire\Traits\WithBulkActions;
-use Square1\Genesis\Http\Livewire\Traits\WithCrudActions;
-use Square1\Genesis\Http\Livewire\Traits\WithPerPagePagination;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithModals;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithSearch;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithBulkActions;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithCrudActions;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithPerPagePagination;
 
-abstract class ResourceTable extends Component
+abstract class GenesisResource extends Component
 {
     use WithPerPagePagination, WithSearch, WithModals, WithCrudActions, WithBulkActions;
 
@@ -64,5 +65,17 @@ abstract class ResourceTable extends Component
     public function formProps() : array
     {
         return [];
+    }
+
+    /**
+     * Get the URI key for the resource.
+     *
+     * @return string
+     */
+    public static function uriKey()
+    {
+        $resource = Str::replaceLast('Resource', '', class_basename(get_called_class()));
+
+        return Str::plural(Str::kebab($resource));
     }
 }
