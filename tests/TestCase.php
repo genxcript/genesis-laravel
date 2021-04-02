@@ -2,13 +2,18 @@
 
 namespace LaravelGenesis\Genesis\Tests;
 
+use Illuminate\Database\Schema\Blueprint;
+use Laravel\Fortify\FortifyServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Laravel\Jetstream\JetstreamServiceProvider;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelGenesis\Genesis\GenesisServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     public function setUp() : void
     {
         parent::setUp();
@@ -17,6 +22,8 @@ class TestCase extends Orchestra
             fn (string $modelName) => 'LaravelGenesis\\Genesis\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
 
+        $this->setUpDatabase($this->app);
+
         // $this->artisan('jetstream:install livewire');
     }
 
@@ -24,12 +31,15 @@ class TestCase extends Orchestra
     {
         return [
             GenesisServiceProvider::class,
-            JetstreamServiceProvider::class,
+            // JetstreamServiceProvider::class,
+            // FortifyServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
+        $app['config']->set('app.key', 'base64:fakekey/avhnnoiIltExLrEfZvvZx7h1Hb29Pgel2ec=');
+
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
             'driver' => 'sqlite',
@@ -41,5 +51,30 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/create_genesis_table.php.stub';
         (new \CreatePackageTable())->up();
         */
+    }
+
+    /**
+     * Set up the database.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function setUpDatabase($app)
+    {
+        $this->artisan('migrate:fresh');
+
+        // Create a light weight version of users table
+
+        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        include_once __DIR__.'/../database/migrations/create_genesis_table.php.stub';
+        (new \CreateGenesisTable())->up();
     }
 }

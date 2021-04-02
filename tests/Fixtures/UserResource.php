@@ -9,7 +9,7 @@ class UserResource extends GenesisResource
 {
     public function query() : Builder
     {
-        return User::all();
+        return User::query();
     }
 
     public function getRowsProperty() : array

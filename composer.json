@@ -20,8 +20,7 @@
         "php": "^7.4",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.0",
-        "livewire/livewire": "^2.4",
-        "laravel/jetstream": "^2.2"
+        "livewire/livewire": "^2.4"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",

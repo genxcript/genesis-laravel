@@ -13,7 +13,7 @@ use LaravelGenesis\Genesis\Http\Controllers\MainController;
 |
 */
 
-Route::prefix(config('genesis.path'))->group(function () {
-    Route::get('', [MainController::class, 'dashboard']);
-    GenesisFacade::registerResources(app_path('Http/Livewire/Genesis'));
+Route::middleware(['web', 'auth'])->prefix(config('genesis.path'))->group(function () {
+    Route::get('', [MainController::class, 'dashboard'])->name('genesis::dashboard');
+    GenesisFacade::registerResourcesRoutes(app_path('Http/Livewire/Genesis'));
 });

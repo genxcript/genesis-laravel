@@ -90,7 +90,7 @@ class Genesis
         return preg_replace('~(\v|\t|\s{2,})~m', '', $subject);
     }
 
-    public function registerResources(string $directory)
+    public function registerResourcesRoutes(string $directory)
     {
         if (! is_dir($directory)) {
             return;
@@ -113,8 +113,8 @@ class Genesis
 
     public function registerResourceRoute($resource)
     {
-        Route::view($resource::uriKey(), 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.index');
-        Route::view($resource::uriKey().'/{resourceId}', 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.view');
-        Route::view($resource::uriKey().'/{resourceId}/edit', 'genesis::dashboard_container')->name('genesis::'.$resource::uriKey().'.edit');
+        Route::get($resource::uriKey(), [MainController::class, 'resourceIndex'])->name('genesis::'.$resource::uriKey().'.index');
+        Route::get($resource::uriKey().'/{resourceId}', [MainController::class, 'resourceView'])->name('genesis::'.$resource::uriKey().'.view');
+        Route::get($resource::uriKey().'/{resourceId}/edit', [MainController::class, 'resourceEdit'])->name('genesis::'.$resource::uriKey().'.edit');
     }
 }
