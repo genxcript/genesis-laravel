@@ -3,10 +3,11 @@
 namespace LaravelGenesis\Genesis;
 
 use Illuminate\Support\Facades\Blade;
-use Spatie\LaravelPackageTools\Package;
-use LaravelGenesis\Genesis\Components\MenuItem;
-use LaravelGenesis\Genesis\Components\AppLayout;
+use Illuminate\View\Compilers\BladeCompiler;
 use LaravelGenesis\Genesis\Commands\GenesisCommand;
+use LaravelGenesis\Genesis\Components\AppLayout;
+use LaravelGenesis\Genesis\Components\MenuItem;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class GenesisServiceProvider extends PackageServiceProvider
@@ -38,11 +39,11 @@ class GenesisServiceProvider extends PackageServiceProvider
         Blade::directive('genesisStyles', [GenesisBladeDirectives::class, 'genesisStyles']);
         Blade::directive('genesisScripts', [GenesisBladeDirectives::class, 'genesisScripts']);
 
-        if (class_exists(Livewire::class)) {
-            \Livewire\Component::macro('notify', function ($message) {
-                $this->dispatchBrowserEvent('notify', $message);
-            });
-        }
+        // if (class_exists(Livewire::class)) {
+        //     \Livewire\Component::macro('notify', function ($message) {
+        //         $this->dispatchBrowserEvent('notify', $message);
+        //     });
+        // }
     }
 
     public function packageRegistered()

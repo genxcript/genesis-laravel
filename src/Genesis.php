@@ -2,12 +2,13 @@
 
 namespace LaravelGenesis\Genesis;
 
-use Livewire\Livewire;
-use Illuminate\Support\Str;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use LaravelGenesis\Genesis\Http\Controllers\MainController;
 use LaravelGenesis\Genesis\Http\Livewire\Form;
 use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
+use Livewire\Livewire;
+use Symfony\Component\Finder\Finder;
 
 class Genesis
 {
@@ -70,7 +71,7 @@ class Genesis
         $pikaday = config('genesis.load_pikaday') ? '<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>' : '';
         $trix = config('genesis.load_trix') ? '<script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>' : '';
 
-        $notifications = file_get_contents(__DIR__.'/../resources/views/components/notification.blade.php');
+        $notifications = file_get_contents(__DIR__ . '/../resources/views/components/notification.blade.php');
 
         return <<<HTML
                 $notifications
@@ -99,10 +100,10 @@ class Genesis
         $namespace = app()->getNamespace();
 
         foreach ((new Finder)->in($directory)->files() as $resource) {
-            $resource = $namespace.str_replace(
+            $resource = $namespace . str_replace(
                 ['/', '.php'],
                 ['\\', ''],
-                Str::after($resource->getPathname(), app_path().DIRECTORY_SEPARATOR)
+                Str::after($resource->getPathname(), app_path() . DIRECTORY_SEPARATOR)
             );
 
             if (new $resource instanceof GenesisResource) {
@@ -113,8 +114,8 @@ class Genesis
 
     public function registerResourceRoute($resource)
     {
-        Route::get($resource::uriKey(), [MainController::class, 'resourceIndex'])->name('genesis::'.$resource::uriKey().'.index');
-        Route::get($resource::uriKey().'/{resourceId}', [MainController::class, 'resourceView'])->name('genesis::'.$resource::uriKey().'.view');
-        Route::get($resource::uriKey().'/{resourceId}/edit', [MainController::class, 'resourceEdit'])->name('genesis::'.$resource::uriKey().'.edit');
+        Route::get($resource::uriKey(), [MainController::class, 'resourceIndex'])->name('genesis::' . $resource::uriKey() . '.index');
+        Route::get($resource::uriKey() . '/{resourceId}', [MainController::class, 'resourceView'])->name('genesis::' . $resource::uriKey() . '.view');
+        Route::get($resource::uriKey() . '/{resourceId}/edit', [MainController::class, 'resourceEdit'])->name('genesis::' . $resource::uriKey() . '.edit');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace [namespace];
 
-use LaravelGenesis\Genesis\TableRow;
+use LaravelGenesis\Genesis\Http\Livewire;
 use Illuminate\Database\Eloquent\Builder;
 use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
 

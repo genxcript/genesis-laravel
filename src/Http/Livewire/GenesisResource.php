@@ -2,19 +2,22 @@
 
 namespace LaravelGenesis\Genesis\Http\Livewire;
 
-use Livewire\Component;
-use Illuminate\Support\Str;
-use LaravelGenesis\Genesis\TableRow;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithModals;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithSearch;
+use Illuminate\Support\Str;
 use LaravelGenesis\Genesis\Http\Livewire\Traits\WithBulkActions;
 use LaravelGenesis\Genesis\Http\Livewire\Traits\WithCrudActions;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithModals;
 use LaravelGenesis\Genesis\Http\Livewire\Traits\WithPerPagePagination;
+use LaravelGenesis\Genesis\Http\Livewire\Traits\WithSearch;
+use Livewire\Component;
 
 abstract class GenesisResource extends Component
 {
-    use WithPerPagePagination, WithSearch, WithModals, WithCrudActions, WithBulkActions;
+    use WithPerPagePagination;
+    use WithSearch;
+    use WithModals;
+    use WithCrudActions;
+    use WithBulkActions;
 
     public $usingCreateView = false;
     public $usingExtraView = false;
