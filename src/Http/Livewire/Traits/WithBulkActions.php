@@ -33,7 +33,9 @@ trait WithBulkActions
 
     public function selectPageRows()
     {
-        $this->selected = $this->items->pluck('id')->map(function ($id) {return (string) $id;});
+        $this->selected = $this->items->pluck('id')->map(function ($id) {
+            return (string) $id;
+        });
     }
 
     public function selectAll()

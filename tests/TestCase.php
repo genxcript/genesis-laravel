@@ -2,13 +2,13 @@
 
 namespace LaravelGenesis\Genesis\Tests;
 
-use Illuminate\Database\Schema\Blueprint;
-use Laravel\Fortify\FortifyServiceProvider;
-use Orchestra\Testbench\TestCase as Orchestra;
-use Laravel\Jetstream\JetstreamServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelGenesis\Genesis\GenesisServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Fortify\FortifyServiceProvider;
+use Laravel\Jetstream\JetstreamServiceProvider;
+use LaravelGenesis\Genesis\GenesisServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
