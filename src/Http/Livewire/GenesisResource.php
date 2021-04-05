@@ -52,17 +52,19 @@ abstract class GenesisResource extends Component
     /**
      * Render the component.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      */
     public function render()
     {
+        /** @psalm-suppress UndefinedInterfaceMethod */
         return view('genesis::livewire.table', [
             'items' => $this->items,
             'fields' => collect($this->rows)
                 ->map(function ($item) {
                     return is_object($item) ? $item : TableRow::make($item);
                 }),
-        ]);
+        ])
+        ->layout('genesis::layouts.app');
     }
 
     public function formProps() : array

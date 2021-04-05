@@ -23,7 +23,6 @@ class MainControllerTest extends TestCase
     /** @test */
     public function it_loads_main_dashboard()
     {
-        $this->withoutExceptionHandling();
         $response = $this->actingAs(User::factory()->create())->get(config('genesis.path'));
 
         $response->assertOk();

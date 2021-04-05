@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'resources_folder' => 'Http/Livewire/Genesis',
     /**
      * Path of the main dashboard.
      */

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\FortifyServiceProvider;
 use Laravel\Jetstream\JetstreamServiceProvider;
 use LaravelGenesis\Genesis\GenesisServiceProvider;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -31,6 +32,7 @@ class TestCase extends Orchestra
     {
         return [
             GenesisServiceProvider::class,
+            LivewireServiceProvider::class,
             // JetstreamServiceProvider::class,
             // FortifyServiceProvider::class,
         ];

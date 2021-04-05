@@ -114,7 +114,10 @@ class Genesis
 
     public function registerResourceRoute($resource)
     {
-        Route::get($resource::uriKey(), [MainController::class, 'resourceIndex'])->name('genesis::' . $resource::uriKey() . '.index');
+        $resourceClass = get_class(new $resource);
+
+        Route::get($resource::uriKey(), $resourceClass)->name('genesis::' . $resource::uriKey() . '.index');
+        // Route::get($resource::uriKey(), [MainController::class, 'resourceIndex'])->name('genesis::' . $resource::uriKey() . '.index');
         Route::get($resource::uriKey() . '/{resourceId}', [MainController::class, 'resourceView'])->name('genesis::' . $resource::uriKey() . '.view');
         Route::get($resource::uriKey() . '/{resourceId}/edit', [MainController::class, 'resourceEdit'])->name('genesis::' . $resource::uriKey() . '.edit');
     }

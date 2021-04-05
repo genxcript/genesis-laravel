@@ -20,7 +20,7 @@ class MainController extends BaseController
 
     public function resourceIndex()
     {
-        return view('genesis::dashboard_container');
+        return view('genesis::resource_index.blade');
     }
 
     public function resourceView()
