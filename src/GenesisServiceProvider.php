@@ -3,10 +3,10 @@
 namespace LaravelGenesis\Genesis;
 
 use Illuminate\Support\Facades\Blade;
-use Spatie\LaravelPackageTools\Package;
-use LaravelGenesis\Genesis\Components\MenuItem;
-use LaravelGenesis\Genesis\Components\AppLayout;
 use LaravelGenesis\Genesis\Commands\GenesisCommand;
+use LaravelGenesis\Genesis\Components\AppLayout;
+use LaravelGenesis\Genesis\Components\MenuItem;
+use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class GenesisServiceProvider extends PackageServiceProvider

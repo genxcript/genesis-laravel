@@ -2,12 +2,12 @@
 
 namespace LaravelGenesis\Genesis;
 
-use Livewire\Livewire;
-use Illuminate\Support\Str;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use LaravelGenesis\Genesis\Http\Livewire\Form;
 use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
+use Livewire\Livewire;
+use Symfony\Component\Finder\Finder;
 
 class Genesis
 {

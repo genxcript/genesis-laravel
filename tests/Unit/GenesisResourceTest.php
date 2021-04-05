@@ -4,8 +4,8 @@ namespace LaravelGenesis\Genesis\Tests\Unit;
 
 use Illuminate\Support\Facades\Route;
 use LaravelGenesis\Genesis\GenesisFacade;
-use LaravelGenesis\Genesis\Tests\TestCase;
 use LaravelGenesis\Genesis\Tests\Fixtures\UserResource;
+use LaravelGenesis\Genesis\Tests\TestCase;
 
 class GenesisResourceTest extends TestCase
 {
