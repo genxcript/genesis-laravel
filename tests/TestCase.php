@@ -77,4 +77,8 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/create_genesis_table.php.stub';
         (new \CreateGenesisTable())->up();
     }
+
+    public function getAnnotations()
+    {
+    }
 }
