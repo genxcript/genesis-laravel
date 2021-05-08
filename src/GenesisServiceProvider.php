@@ -24,7 +24,7 @@ class GenesisServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasRoute('web')
             ->hasViews()
-
+            ->hasTranslations()
             ->hasMigration('create_genesis_table')
             // ->hasCommand(GenesisCommand::class)
 ;
