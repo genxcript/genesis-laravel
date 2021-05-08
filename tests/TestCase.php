@@ -2,6 +2,8 @@
 
 namespace LaravelGenesis\Genesis\Tests;
 
+use BladeUI\Icons\BladeIconsServiceProvider;
+use BladeUI\Zondicons\BladeZondiconsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,6 +33,8 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
+            BladeIconsServiceProvider::class,
+            BladeZondiconsServiceProvider::class,
             GenesisServiceProvider::class,
             LivewireServiceProvider::class,
             // JetstreamServiceProvider::class,
