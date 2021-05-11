@@ -36,10 +36,10 @@ abstract class Form extends Component
     public function render()
     {
         if ($this->purpose == 'edit') {
-            return view('genesis::livewire.edit_item');
+            return view('genesis::general.edit_item');
         }
         if ($this->purpose == 'create') {
-            return view('genesis::livewire.create_item');
+            return view('genesis::general.create_item');
         }
     }
 }

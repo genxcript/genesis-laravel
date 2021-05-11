@@ -57,7 +57,7 @@ abstract class GenesisResource extends Component
     public function render()
     {
         /** @psalm-suppress UndefinedInterfaceMethod */
-        return view('genesis::livewire.table', [
+        return view('genesis::general.table', [
             'items' => $this->items,
             'fields' => collect($this->rows)
                 ->map(function ($item) {
