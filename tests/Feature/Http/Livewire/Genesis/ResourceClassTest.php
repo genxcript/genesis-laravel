@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelGenesis\Genesis\Tests\Feature\Http\Livewire\Genesis;
+namespace LaravelGenesis\Genesis\Tests\Feature\Livewire\Genesis;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelGenesis\Genesis\GenesisFacade;
@@ -33,6 +33,7 @@ class ResourceClassTest extends TestCase
                 'name' => 'Emiliano',
                 'email' => 'emilianotisato@gmail.com',
             ])->create();
+
 
         $response = $this->get(route('genesis::users.index'))
         ->assertSeeLivewire('laravel-genesis.genesis.tests.fixtures.user-resource');

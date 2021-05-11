@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelGenesis\Genesis\Http\Livewire\Fields;
+namespace LaravelGenesis\Genesis\Livewire\Fields;
 
 use Illuminate\View\View;
 

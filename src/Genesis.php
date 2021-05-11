@@ -5,8 +5,8 @@ namespace LaravelGenesis\Genesis;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use LaravelGenesis\Genesis\Http\Controllers\MainController;
-use LaravelGenesis\Genesis\Http\Livewire\Form;
-use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
+use LaravelGenesis\Genesis\Livewire\Form;
+use LaravelGenesis\Genesis\Livewire\GenesisResource;
 use Livewire\Livewire;
 use Symfony\Component\Finder\Finder;
 
@@ -15,7 +15,7 @@ class Genesis
     public function mountForm(string $component, $params = [])
     {
         if (! new $component instanceof Form) {
-            throw new \Exception('You need to pass an instance of LaravelGenesis\Genesis\Http\Livewire\Form');
+            throw new \Exception('You need to pass an instance of LaravelGenesis\Genesis\Livewire\Form');
         }
 
         return  Livewire::mount($component, $params)->effects['html'];

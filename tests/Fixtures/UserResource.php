@@ -3,7 +3,7 @@
 namespace LaravelGenesis\Genesis\Tests\Fixtures;
 
 use Illuminate\Database\Eloquent\Builder;
-use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
+use LaravelGenesis\Genesis\Livewire\GenesisResource;
 
 class UserResource extends GenesisResource
 {

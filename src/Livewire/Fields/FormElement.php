@@ -1,17 +1,17 @@
 <?php
 
-namespace LaravelGenesis\Genesis\Http\Livewire\Filters;
+namespace LaravelGenesis\Genesis\Livewire\Fields;
 
 use Illuminate\View\View;
 
-abstract class Filter
+abstract class FormElement
 {
     /**
-     * The displayable name of the row.
+     * The displayable labe of the row.
      *
      * @var string
      */
-    public $name;
+    public $label;
 
     /**
      * The attribute name of the model.
@@ -21,26 +21,26 @@ abstract class Filter
     public $attribute;
 
     /**
-     * The tailwind width class
+     * The tailwind grid size
      *
      * @var string
      */
-    public $width = 'w-1/3';
+    public $rowSize = 1;
 
     abstract public function render() : View;
 
     /**
-     * Create a new filter.
+     * Create a new form element.
      *
      * @param  string  $name
      * @param  string|null  $value
      * @return void
      */
-    public function __construct($name, $attribute = null)
+    public function __construct($label, $attribute = null)
     {
-        $this->name = $name;
+        $this->label = $label;
 
-        $this->attribute = $attribute ?? str_replace(' ', '_', strtolower($name));
+        $this->attribute = $attribute ?? str_replace(' ', '_', strtolower($label));
     }
 
     /**
@@ -54,6 +54,13 @@ abstract class Filter
     public function withClass($class)
     {
         $this->width = $class;
+
+        return $this;
+    }
+
+    public function rowSize(int $size)
+    {
+        $this->rowSize = $size;
 
         return $this;
     }

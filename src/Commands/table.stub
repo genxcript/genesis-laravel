@@ -2,9 +2,9 @@
 
 namespace [namespace];
 
-use LaravelGenesis\Genesis\Http\Livewire;
+use LaravelGenesis\Genesis\Livewire;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelGenesis\Genesis\Http\Livewire\GenesisResource;
+use LaravelGenesis\Genesis\Livewire\GenesisResource;
 
 class [class] extends GenesisResource
 {

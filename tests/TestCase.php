@@ -26,6 +26,7 @@ class TestCase extends Orchestra
         );
 
         $this->setUpDatabase($this->app);
+        $this->withoutMix();
 
         // $this->artisan('jetstream:install livewire');
     }

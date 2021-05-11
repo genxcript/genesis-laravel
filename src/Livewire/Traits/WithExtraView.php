@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelGenesis\Genesis\Http\Livewire\Traits;
+namespace LaravelGenesis\Genesis\Livewire\Traits;
 
 trait WithExtraView
 {

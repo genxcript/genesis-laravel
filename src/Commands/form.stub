@@ -2,7 +2,7 @@
 
 namespace [namespace];
 
-use LaravelGenesis\Genesis\Http\Livewire\Form;
+use LaravelGenesis\Genesis\Livewire\Form;
 
 class [class] extends Form
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelGenesis\Genesis\Http\Livewire;
+namespace LaravelGenesis\Genesis\Livewire;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithBulkActions;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithCrudActions;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithModals;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithPerPagePagination;
-use LaravelGenesis\Genesis\Http\Livewire\Traits\WithSearch;
+use LaravelGenesis\Genesis\Livewire\Traits\WithBulkActions;
+use LaravelGenesis\Genesis\Livewire\Traits\WithCrudActions;
+use LaravelGenesis\Genesis\Livewire\Traits\WithModals;
+use LaravelGenesis\Genesis\Livewire\Traits\WithPerPagePagination;
+use LaravelGenesis\Genesis\Livewire\Traits\WithSearch;
 use Livewire\Component;
 
 abstract class GenesisResource extends Component
