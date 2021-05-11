@@ -10,7 +10,7 @@ abstract class GenesisForm extends Component
 
     abstract protected function save();
 
-    public function getFieldsListProperty()
+    public function getFormElementsProperty()
     {
         return $this->fields();
     }
