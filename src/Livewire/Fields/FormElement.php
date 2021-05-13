@@ -20,13 +20,6 @@ abstract class FormElement
      */
     public $attribute;
 
-    /**
-     * The tailwind grid size
-     *
-     * @var string
-     */
-    public $rowSize = 1;
-
     abstract public function render() : View;
 
     /**
@@ -54,13 +47,6 @@ abstract class FormElement
     public function withClass($class)
     {
         $this->width = $class;
-
-        return $this;
-    }
-
-    public function rowSize(int $size)
-    {
-        $this->rowSize = $size;
 
         return $this;
     }

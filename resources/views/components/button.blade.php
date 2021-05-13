@@ -1,4 +1,4 @@
-<span class="inline-flex rounded-md shadow-sm">
+<span class="rounded-md shadow-sm">
     @if(isset($link))
     <a {{ $attributes->merge([
         'href' => '#',
