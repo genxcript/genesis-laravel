@@ -43,11 +43,4 @@ abstract class FormElement
     {
         return new static(...$arguments);
     }
-
-    public function withClass($class)
-    {
-        $this->width = $class;
-
-        return $this;
-    }
 }
